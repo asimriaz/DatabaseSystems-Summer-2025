@@ -117,7 +117,7 @@ FROM employees;
 SELECT last_name ||' is a '||job_id AS "Employee Details"
 FROM   employees;
 ```
-```sh
+```
      Employee Details
 ---------------------------
  King is a AD_PRES
