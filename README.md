@@ -12,7 +12,7 @@ FROM    table;
 SELECT *
 FROM   departments;
 ```
-```sh
+<pre>
  department_id |   department_name    | manager_id | location_id
 ---------------+----------------------+------------+-------------
             10 | Administration       |        200 |        1700
@@ -43,14 +43,14 @@ FROM   departments;
            260 | Recruiting           |            |        1700
            270 | Payroll              |            |        1700
 (27 rows)
-```
+</pre>
 
 ```sql
 SELECT department_id, location_id 
 FROM   departments;
 ```
 
-```sh
+<pre>
  department_id | location_id
 ---------------+-------------
             10 |        1700
@@ -81,7 +81,8 @@ FROM   departments;
            260 |        1700
            270 |        1700
 (27 rows)
-```
+</pre>
+
  #### Concatenation Operator
  A concatenation operator:
  - Links columns or character strings to other columns
@@ -93,7 +94,7 @@ SELECT last_name||job_id AS "Employees"
 FROM employees;
 ```
 
-```sh
+<pre>
       Employees
 ---------------------
  KingAD_PRES
@@ -104,7 +105,7 @@ FROM employees;
  AustinIT_PROG
  -- More  --
  (107 rows)
-```
+</pre>
 
 #### Literal Character Strings
 - A literal is a character, a number, or a date that is included in the SELECT statement.
@@ -117,7 +118,7 @@ FROM employees;
 SELECT last_name ||' is a '||job_id AS "Employee Details"
 FROM   employees;
 ```
-```
+<pre>
      Employee Details
 ---------------------------
  King is a AD_PRES
@@ -137,7 +138,7 @@ FROM   employees;
  Higgins is a AC_MGR
  Gietz is a AC_ACCOUNT
 (107 rows)
-```
+</pre>
 
 #### Duplicate Rows
 The default display of queries is all rows, including duplicate rows.
@@ -146,7 +147,7 @@ The default display of queries is all rows, including duplicate rows.
 SELECT department_id 
 FROM   employees;
 ```
-```sh
+<pre>
  department_id
 ---------------
             90
@@ -156,7 +157,7 @@ FROM   employees;
             60
             60
 -- More  --
-```
+</pre>
 
 ```sql
 SELECT DISTINCT department_id 
@@ -189,7 +190,7 @@ FROM   employees;
 \d employees
 ```
 
-```sh
+<pre>
                                                  Table "hr.employees"
      Column     |            Type             | Collation | Nullable |                    Default
 ----------------+-----------------------------+-----------+----------+------------------------------------------------
@@ -221,7 +222,7 @@ Referenced by:
     TABLE "departments" CONSTRAINT "dept_mgr_fk" FOREIGN KEY (manager_id) REFERENCES employees(employee_id)
     TABLE "employees" CONSTRAINT "employees_manager_id_fkey" FOREIGN KEY (manager_id) REFERENCES employees(employee_id)
     TABLE "job_history" CONSTRAINT "job_history_employee_id_fkey" FOREIGN KEY (employee_id) REFERENCES employees(employee_id)
-```
+</pre>
 
 ### 2. Restricting and Sorting Data
 #### Objectives
@@ -232,7 +233,7 @@ After completing this lesson, you should be able to do the following:
 
 #### Limiting Rows Using a Selection
 
-```sh
+<pre>
  employee_id |  last_name  |   job_id   | department_id
 -------------+-------------+------------+---------------
          100 | King        | AD_PRES    |            90
@@ -242,7 +243,7 @@ After completing this lesson, you should be able to do the following:
          104 | Ernst       | IT_PROG    |            60
          105 | Austin      | IT_PROG    |            60
 -- More  --
-```
+</pre>
 
 “retrieve all employees in department 90”
 
