@@ -233,6 +233,7 @@ After completing this lesson, you should be able to do the following:
 
 #### Limiting Rows Using a Selection
 
+> retrieve all employees
 <pre>
  employee_id |  last_name  |   job_id   | department_id
 -------------+-------------+------------+---------------
@@ -245,23 +246,53 @@ After completing this lesson, you should be able to do the following:
 -- More  --
 </pre>
 
-“retrieve all employees in department 90”
+> retrieve all employees in department 90
 
+<pre>
+ employee_id | last_name | job_id  | department_id
+-------------+-----------+---------+---------------
+         100 | King      | AD_PRES |            90
+         101 | Kochhar   | AD_VP   |            90
+         102 | De Haan   | AD_VP   |            90
+(3 rows)
+</pre>
 
+#### Limiting the Rows That Are Selected
+- Restrict the rows that are returned by using the `WHERE` clause:
 
+```sh
+SELECT *|{[DISTINCT] column|expression [alias],...} 
+FROM   table
+[WHERE condition(s)];
+```
+- The `WHERE` clause follows the `FROM` clause.
 
+#### Using the `WHERE` Clause
 
+```sh
+SELECT employee_id, last_name, job_id, department_id 
+FROM   employees
+WHERE  department_id = 90 ;
+```
 
+#### Character Strings and Dates
+- Character strings and date values are enclosed with single quotation marks.
+- Character values are case-sensitive and date values are format-sensitive.
+- The default date display format is `DD-MON-RR`.
 
+```sh
+SELECT last_name, job_id, department_id 
+FROM   employees
+WHERE  last_name = 'Whalen' ;
+```
 
+```sh
+SELECT last_name 
+FROM   employees
+WHERE  hire_date = '17-FEB-96' ;
+```
 
-
-
-
-
-
-
-
+#### Comparison Operators
 | **Operator**          | **Meaning**                                 |
 | --------------------- | ------------------------------------------- |
 | `=`                   | Equal to                                    |
@@ -275,7 +306,183 @@ After completing this lesson, you should be able to do the following:
 | `LIKE`                | Match a character pattern (wildcards `% _`) |
 | `IS NULL`             | Checks if a value is `NULL`                 |
 
+#### Using Comparison Operators
+```sh
+SELECT last_name, salary 
+FROM   employees
+WHERE  salary <= 3000 ;
+```
 
-![alt text](/images/image.png)
+<pre>
+  last_name  | salary
+-------------+---------
+ Baida       | 2900.00
+ Tobias      | 2800.00
+ Himuro      | 2600.00
+ Colmenares  | 2500.00
+ Mikkilineni | 2700.00
+ Landry      | 2400.00
+ Markle      | 2200.00
+ Atkinson    | 2800.00
+ Marlow      | 2500.00
+ Olson       | 2100.00
+ Rogers      | 2900.00
+ Gee         | 2400.00
+ Philtanker  | 2200.00
+ Seo         | 2700.00
+ Patel       | 2500.00
+ Matos       | 2600.00
+ Vargas      | 2500.00
+ Sullivan    | 2500.00
+ Geoni       | 2800.00
+ Cabrio      | 3000.00
+ Gates       | 2900.00
+ Perkins     | 2500.00
+ Jones       | 2800.00
+ Feeney      | 3000.00
+ OConnell    | 2600.00
+ Grant       | 2600.00
+(26 rows)
+</pre>
 
+#### Range Conditions Using the `BETWEEN` Operator
 
+```sh
+SELECT last_name, salary
+FROM   employees
+WHERE  salary BETWEEN 2500 AND 3500 ;
+```
+
+<pre>
+  last_name  | salary
+-------------+---------
+ Khoo        | 3100.00
+ Baida       | 2900.00
+ Tobias      | 2800.00
+ Himuro      | 2600.00
+ Colmenares  | 2500.00
+ Nayer       | 3200.00
+ Mikkilineni | 2700.00
+ Bissot      | 3300.00
+ Atkinson    | 2800.00
+ Marlow      | 2500.00
+ Mallin      | 3300.00
+ Rogers      | 2900.00
+ Stiles      | 3200.00
+ Seo         | 2700.00
+ Patel       | 2500.00
+ Rajs        | 3500.00
+ Davies      | 3100.00
+ Matos       | 2600.00
+ Vargas      | 2500.00
+ Taylor      | 3200.00
+ Fleaur      | 3100.00
+ Sullivan    | 2500.00
+ Geoni       | 2800.00
+ Dellinger   | 3400.00
+ Cabrio      | 3000.00
+ Gates       | 2900.00
+ Perkins     | 2500.00
+ McCain      | 3200.00
+ Jones       | 2800.00
+ Walsh       | 3100.00
+ Feeney      | 3000.00
+ OConnell    | 2600.00
+ Grant       | 2600.00
+(33 rows)
+</pre>
+
+#### Membership Condition Using the `IN` Operator
+Use the `IN` operator to test for values in a list:
+
+```sh
+SELECT employee_id, last_name, salary, manager_id 
+FROM   employees
+WHERE  manager_id IN (100, 101, 201) ;
+```
+
+<pre>
+ employee_id | last_name |  salary  | manager_id
+-------------+-----------+----------+------------
+         101 | Kochhar   | 17000.00 |        100
+         102 | De Haan   | 17000.00 |        100
+         108 | Greenberg | 12000.00 |        101
+         114 | Raphaely  | 11000.00 |        100
+         120 | Weiss     |  8000.00 |        100
+         121 | Fripp     |  8200.00 |        100
+         122 | Kaufling  |  7900.00 |        100
+         123 | Vollman   |  6500.00 |        100
+         124 | Mourgos   |  5800.00 |        100
+         145 | Russell   | 14000.00 |        100
+         146 | Partners  | 13500.00 |        100
+         147 | Errazuriz | 12000.00 |        100
+         148 | Cambrault | 11000.00 |        100
+         149 | Zlotkey   | 10500.00 |        100
+         200 | Whalen    |  4400.00 |        101
+         201 | Hartstein | 13000.00 |        100
+         202 | Fay       |  6000.00 |        201
+         203 | Mavris    |  6500.00 |        101
+         204 | Baer      | 10000.00 |        101
+         205 | Higgins   | 12000.00 |        101
+(20 rows)
+</pre>
+
+#### Pattern Matching Using the `LIKE` Operator
+- Use the `LIKE` operator to perform wildcard searches of valid search string values.
+- Search conditions can contain either literal characters or numbers:
+    - `%` denotes zero or many characters. 
+    - `_` denotes one character.
+
+```sh
+SELECT first_name
+FROM employees
+WHERE first_name LIKE 'S%' ;
+```
+
+<pre>
+ first_name
+------------
+ Steven
+ Shelli
+ Sigal
+ Shanta
+ Steven
+ Stephen
+ Sarath
+ Sundar
+ Sundita
+ Sarah
+ Samuel
+ Susan
+ Shelley
+(13 rows)
+</pre>
+
+#### Combining Wildcard Characters
+• You can combine the two wildcard characters (`%, _`) with literal characters for pattern matching:
+
+```sh
+SELECT last_name
+FROM   employees
+WHERE  last_name LIKE '_o%' ;
+```
+
+<pre>
+ last_name
+------------
+ Kochhar
+ Lorentz
+ Popp
+ Tobias
+ Colmenares
+ Vollman
+ Mourgos
+ Rogers
+ Doran
+ Fox
+ Johnson
+ Jones
+(12 rows)
+</pre>
+
+- You can use the ESCAPE identifier to search for the actual `%` and `_` symbols.
