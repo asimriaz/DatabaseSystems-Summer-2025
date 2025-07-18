@@ -485,4 +485,4 @@ WHERE  last_name LIKE '_o%' ;
 (12 rows)
 </pre>
 
-- You can use the ESCAPE identifier to search for the actual `%` and `_` symbols.
+- You can use the `ESCAPE` identifier to search for the actual `%` and `_` symbols.
