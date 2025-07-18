@@ -162,7 +162,7 @@ FROM   employees;
 SELECT DISTINCT department_id 
 FROM   employees;
 ```
-```sh
+<pre>
  department_id
 ---------------
             70
@@ -178,7 +178,7 @@ FROM   employees;
             40
             60
 (12 rows)
-```
+</pre>
 
 
 #### Displaying the Table Structure
