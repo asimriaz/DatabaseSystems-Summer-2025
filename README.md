@@ -751,10 +751,11 @@ After completing this lesson, you should be able to do the following:
 - Use character, number, and date functions in SELECT statements
 
 #### SQL Functions
-![](images/sql-functions.jpeg)
+<img src="images/sql-functions.jpeg" width="50%" />
 
 #### Two Types of SQL Functions
-![](images/types-of-function.jpeg)
+<img src="images/types-of-function.jpeg" width="50%" />
+
 #### Single-Row Functions
 Single-row functions:
 - Manipulate data items
@@ -770,11 +771,10 @@ function_name [(arg1, arg2,...)]
 ```
 
 #### Single-Row Functions
-![](images/single-row-function.jpeg)
+<img src="images/single-row-function.jpeg" width="50%" />
 
 #### Character Functions
-![](images/character-functions.jpeg)
-
+<img src="images/character-functions.jpeg" width="50%" />
 
 #### Case-Conversion Functions
 These functions convert the case for character strings:
