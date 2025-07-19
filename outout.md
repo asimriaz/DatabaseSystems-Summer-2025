@@ -485,6 +485,7 @@ WHERE  last_name LIKE '_o%' ;
 (12 rows)
 </pre>
 
+<<<<<<< HEAD
 - You can use the 'ESCAPE' identifier to search for the actual `%` and `_` symbols.
 
 #### Using the `NULL` Conditions
@@ -948,4 +949,4 @@ WHERE  hire_date < '01-FEB-88';
 (2 rows)
 </pre>
 
-3-21
+
